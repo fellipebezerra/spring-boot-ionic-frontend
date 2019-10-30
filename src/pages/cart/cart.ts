@@ -38,8 +38,7 @@ export class CartPage {
         },
         error => {});
     }
-  }  
-/*
+  } 
   removeItem(produto: ProdutoDTO) {
     this.items = this.cartService.removeProduto(produto).items;
   }
@@ -62,5 +61,5 @@ export class CartPage {
 
   checkout() {
     this.navCtrl.push('PickAddressPage');
-  }*/
+  }
 }
