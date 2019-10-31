@@ -64,14 +64,18 @@ export class OrderConfirmationPage {
   checkout() {
     this.pedidoService.insert(this.pedido)
       .subscribe(response => {
-        console.log(response.headers.get('location'));
         this.cartService.createOrClearCart();
-        //this.codpedido = this.extractId(response.headers.get('location'));
+        this.codpedido = this.extractId(response.headers.get('location'));
       },
       error => {
         if (error.status == 403) {
           this.navCtrl.setRoot('HomePage');
         }
       });
+  }
+
+  private extractId(location : string) : string {
+    let position = location.lastIndexOf('/');
+    return location.substring(position + 1, location.length);
   }
 }
